@@ -1,0 +1,51 @@
+﻿<!-- AanPassing voor de kaartjes mooi over elkaar te leggen gebuert aleen op deze pagina -->
+<style>
+    .card {
+        margin-bottom: -180px;
+    }
+
+        .card:hover {
+            margin-bottom: -120px;
+            margin-top: -50px;
+            transform: rotate(5deg);
+        }
+</style>
+
+<!-- ControlPanal to push cards to Post -->
+<article id="inPutArticals" style="width:250px;height:170px;">
+    <div id="strockCard"></div>
+    <div id="strockCardInside"></div>
+    <h1 id="titelInfoCard">Conferm Selection</h1>
+
+
+    <div id="inPutContent" style="height:100px;">
+        <p>Wil je de geselecterde kaart bewerken ?</p>
+
+        <!-- Verwerkinfs Partial (PostDeck!) knopje -->
+        <partial name="FormPassCardToEdit" model="new string[DataBase.Pokemons.Count()]" />
+    </div>
+
+</article>
+
+<!-- rendert alle kaarten om uit te kiezen -->
+<partial name="RenderDeckNoLinksPatial" model="@DataBase.Pokemons.ToList()" />
+
+<!-- hidden feald aanmaken voor het dorgeven van variabelen  -->
+
+@for (int i = 0; i < (GetUser(HttpContextAccessor.HttpContext).PlayDeck == null ? 0 : GetUser(HttpContextAccessor.HttpContext).PlayDeck.Count()); i++)
+{
+    <input hidden="hidden" id="preSelection" value="" />
+}
+
+<!-- Intelize Razor vars for JavaScript / scripts -->
+<script>
+
+    var countOfCards = @DataBase.Pokemons.Count();
+    var maxSelectebelPokemons = 1; // <---------- maakt dat je maar 1 pokemon kan selecteeren
+    var flickerSelectColor = '@CardSelectColorOne';
+    var selectColorOne = '@CardSelectColorOne';
+    var selectColorTwo = '@CardSelectColorTwo';
+
+</script>
+
+<script asp-append-version="true" src="~/js/CardSelectScriptOnName.js"></script>

@@ -1,0 +1,36 @@
+﻿@model SearchResultModel
+
+
+@if (Model.Pokemons.Count != 0)
+{
+    <div id="itemList" style="margin:20px;">
+        <div style="width:100%">
+            <h1 style="width:120px; margin-left:20px; text-align:center; margin:15px;">Cards</h1>
+        </div>
+        <partial name="RenderDeckPatial" model="Model.Pokemons" />
+    </div>
+}
+
+
+@if (Model.Skills.Count != 0)
+{
+    
+    <div id="itemList" style="margin:20px;">
+         <div style="width:100%">
+            <h1 style="width:120px;margin-left:20px; text-align:center; margin:15px;">Skills</h1>
+        </div>
+        <partial name="RenderSkillCardsPartial" model="Model.Skills" />
+    </div>
+
+}
+
+
+@if (GetUser(HttpContextAccessor.HttpContext) != null && Model.Users.Count != 0)
+{
+    <div id="itemList" style="margin:20px;">
+        <div style="width:100%">
+            <h1 style="width:120px;margin-left:20px; text-align:center; margin:15px;">Users</h1>
+        </div>
+        <partial name="RenderUsersPlusDecks" model="Model.Users" />
+    </div>
+}

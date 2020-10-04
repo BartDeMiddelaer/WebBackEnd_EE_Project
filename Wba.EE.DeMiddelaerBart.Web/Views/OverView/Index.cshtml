@@ -1,0 +1,75 @@
+﻿
+@{
+    var pokemonList = DataBase.Pokemons.ToList();
+    pokemonList.Sort((a, b) => a.Type.CompareTo(b.Type));
+}
+
+
+<h1>Pokemon types</h1>
+<div id="pokemonTypeColection">
+    @{
+        string backColor = "";
+
+        foreach (var type in Enum.GetValues(typeof(PokemonTypes)))
+        {
+            if (type is PokemonTypes.Alle) { }
+            else
+            {
+
+                switch (type)
+                {
+                    case PokemonTypes.Normal:
+                        backColor = "linen";
+                        break;
+                    case PokemonTypes.Fire:
+                        backColor = "orangered";
+
+                        break;
+                    case PokemonTypes.Water:
+                        backColor = "cornflowerblue";
+
+                        break;
+                    case PokemonTypes.Electric:
+                        backColor = "yellow";
+
+                        break;
+                    case PokemonTypes.Grass:
+                        backColor = "forestgreen";
+
+                        break;
+                    case PokemonTypes.Psychic:
+                        backColor = "mediumpurple";
+
+                        break;
+                    default:
+                        break;
+                }
+
+                <a style="background-color:@backColor;" asp-controller="Home" asp-action="OutputDeck" asp-route-catogorie="Type" asp-route-value="@type"> @type pokemon</a>
+            }
+        }
+    }
+</div>
+
+<h1>Pokemons</h1>
+<div id="itemList">
+    <partial name="RenderDeckPatial" model="@pokemonList" />
+</div>
+
+<!-- Gaat alle types af in PokemonTypes Dus als je later een toevoegt gaat dit dinamis mee -->
+@{
+    foreach (var type in Enum.GetValues(typeof(PokemonTypes)))
+    {
+        if ((PokemonTypes)type != PokemonTypes.Alle)
+        {
+            <h1>@type Skills</h1>
+            <div id="itemList">
+
+                <div id="skillsCardFlex">
+                    <partial name="RenderSkillCardsPartial" model="DataBase.Skills.ToList().FindAll(skill => skill.SkillType == (PokemonTypes)type)" />
+                </div>
+
+            </div>
+        }
+    }
+}

@@ -1,0 +1,54 @@
+﻿@model InPutNewPokemonModel
+
+<article id="inPutArticals" style="width:400px;">
+    <div id="strockCard"></div>
+    <div id="strockCardInside"></div>
+    <h1 id="titelInfoCard">Edit pokemon @Model.Name</h1>
+
+    <div id="inPutContent">
+        <form asp-controller="AdminRights" asp-action="NewPokemonSucses" method="post" id="regForm">
+
+            <label asp-for="PokemonPictureUrl"></label><br />
+            <input asp-for="PokemonPictureUrl" maxlength="250" /><br />
+            <span asp-validation-for="PokemonPictureUrl"></span><br />
+
+            <label asp-for="Name"></label><br />
+            <input asp-for="Name" maxlength="50" /><br />
+            <span asp-validation-for="Name"></span><br />
+
+
+            <label asp-for="Mana"></label><br />
+            <input asp-for="Mana" maxlength="3"/><br />
+            <span asp-validation-for="Mana"></span><br />
+
+
+            <label asp-for="HealthPoints"></label><br />
+            <input asp-for="HealthPoints" maxlength="3"/><br />
+            <span asp-validation-for="HealthPoints"></span><br />
+
+
+            <label asp-for="Level"></label><br />
+            <input asp-for="Level" maxlength="2"/><br />
+            <span asp-validation-for="Level"></span><br />
+
+
+            <label asp-for="Type"></label><br />
+            <select asp-for="Type" asp-items="@Html.GetEnumSelectList<PokemonTypes>()"></select><br />
+            <span asp-validation-for="Type"></span><br />
+
+
+            <label asp-for="Height"></label><br />
+            <input asp-for="Height" maxlength="3" /><br />
+            <span asp-validation-for="Height"></span><br />
+
+
+            <label asp-for="Weight"></label><br />
+            <input asp-for="Weight" maxlength="3"/><br />
+            <span asp-validation-for="Weight"></span><br />
+
+            <input type="submit" />
+
+        </form>
+    </div>
+
+</article>

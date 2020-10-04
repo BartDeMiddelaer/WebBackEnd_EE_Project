@@ -1,0 +1,199 @@
+﻿@model List<Pokemon>
+@{
+    var cardCounter = 0;
+    Random rand = new Random();
+}
+
+<style>
+    a {
+        text-decoration:none;
+        color:black;
+        cursor: pointer;
+    }
+    #skill:hover {
+        background-color: lawngreen;
+        cursor: pointer;
+    }
+</style>
+
+
+
+@if (Model != null)
+ {
+   @foreach (var pokemon in Model)
+    {
+        string backColor = "";
+
+        <!-- Bekijkt welke achtergrond kleur er moet gegeven worden -->
+        switch (pokemon.Type)
+        {
+            case PokemonTypes.Normal:
+                backColor = "linen";
+                break;
+            case PokemonTypes.Fire:
+                backColor = "orangered";
+
+                break;
+            case PokemonTypes.Water:
+                backColor = "cornflowerblue";
+
+                break;
+            case PokemonTypes.Electric:
+                backColor = "yellow";
+
+                break;
+            case PokemonTypes.Grass:
+                backColor = "forestgreen";
+
+                break;
+            case PokemonTypes.Psychic:
+                backColor = "mediumpurple";
+
+                break;
+            default:
+                break;
+        }
+
+        <!-- Gaaft een ID aan een kaart zo dat deze aangeroepen kan worden met JS -->
+        string cardID = $"card{cardCounter}";
+
+        <div class="card" id="@cardID" style="background-color:@backColor">
+
+            <!-- Card Props -->
+            <h1 id="pokemonName">@pokemon.Name</h1>
+            <a 
+               asp-controller="Home" 
+               asp-action="OutputDeck" 
+               asp-route-catogorie="Property" 
+               asp-route-value="Lvl" 
+               asp-route-supValue="@pokemon.Level" 
+
+               id="pokemonLvl">Lv:@pokemon.Level</a>
+
+            <a id="pokemonType">@pokemon.Type.ToString()</a>
+
+            <p id="pokemonBio">
+                <a>Height: @pokemon.Height M </a>,
+                <a> Weight: @pokemon.Weight kg</a>,
+                <a>@pokemon.BMI bmi</a>
+            </p>
+             
+                    <!-- BreakFree Anematie -->
+                    <!-- Sage 1 PokeBalle BeginStage ---->
+                    <img id="pokemonImg" src="~/images/PokemonBall.svg"
+                         style="position:absolute;
+                                 padding:30px;
+                                 width: 180px;
+                                 height: 60px;" />
+
+            <!-- Omranding van de kaart HardBlack -->
+            <div id="strockCard"></div>
+            <div id="strockCardInside"></div>
+
+             <!-- Hp Props -->
+            <input id="maxHp" hidden="hidden" asp-for="@pokemon.HealthPoints" />
+            <div id="pokemonHp">
+                <div id="hpProsentIndicator"></div>
+                <p>@pokemon.HealthPoints</p>
+            </div>
+
+            <!-- Mp Props -->
+            <input id="maxMana" hidden="hidden" asp-for="@pokemon.Mana" />
+            <div id="pokemonMana">
+                <div id="mpProsentIndicator"></div>
+                <p>@pokemon.Mana </p>              
+            </div>
+
+            <script>
+
+                setTimeout(() => {
+
+                    // Stage 2 BOOM! opening
+                    document.getElementById('@cardID').querySelector("img").src = '/images/boom.svg';
+                    document.getElementById('@cardID').querySelector("img").style.transform = 'rotate(-5deg)';
+
+                    for (let i = 0; i < 50; i++) {
+                        //Stage 3 Rumbele
+                        setTimeout(() => {
+                            if (i % 2 === 0 )
+                                document.getElementById('@cardID').querySelector("img").style.transform = 'rotate(3deg)';
+                            else
+                                document.getElementById('@cardID').querySelector("img").style.transform = 'rotate(-3deg)';
+                        }, i * 20);
+
+                        // Stage 4 ShowPokemon
+                        setTimeout(() => {
+                            document.getElementById('@cardID').querySelector("img").src = '@pokemon.PokemonPictureUrl';
+                            document.getElementById('@cardID').querySelector("img").style.transform = 'rotate(0deg)';
+                            document.getElementById('@cardID').querySelector("img").style.padding = '0';
+                            document.getElementById('@cardID').querySelector("img").style.height = '120px';
+                            document.getElementById('@cardID').querySelector("img").style.width = '240px';
+                        }, 1000 );
+                    }
+                }, @rand.Next(100,1500));
+
+            </script>
+
+            @if (pokemon.ThisPokemonsSkills.Count() == 2)
+            {
+                <!-- Skill Props -->             
+                <div id="skillContainer">
+                    <ul>
+                        @foreach (var skill in pokemon.ThisPokemonsSkills)
+                        {
+                            <li id="skill" >
+
+                                <a asp-controller="Home" asp-action="OutputDeck" asp-route-catogorie="SkillTypes" asp-route-value="@skill.SkillType">
+
+                                    <div id="skillName">@skill.Name</div>
+                                    <div id="skillEffect">@skill.Effect</div>
+
+                                    <div id="modefyers">
+                                        <div id="skillDps"><p>@skill.Dps</p></div>
+                                        <div id="skillCost"><p>@skill.ManaCost</p></div>
+                                    </div>
+
+                                    <input id="skillPP" hidden="hidden" asp-for="@skill.Pp" />
+                                    <input id="skillAcc" hidden="hidden" asp-for="@skill.Acc" />
+                                    <input id="skillTurnes" hidden="hidden" asp-for="@skill.Turns" />
+
+                                    <div id="skillFXEnum">
+
+                                        @{
+                                            /*
+
+                                            foreach (var fx in skill.SFX)
+                                            {
+                                                <input id="sFX" hidden="hidden" asp-for="@fx" />
+                                            }
+
+                                            */
+                                        }
+                                    </div>
+                                </a>
+
+                            </li>
+                        }
+                    </ul>
+                </div>
+            }
+            else
+            {
+                <div id="alleSkillsOfType">
+                    <ul>
+                        @foreach (var skill in pokemon.ThisPokemonsSkills)
+                        {
+                            <h6>@skill.Name</h6>
+                            <p>@skill.Effect</p>
+
+                            <div id="dps">Dps: @skill.Dps</div>
+                            <div id="mana">Mana: @skill.ManaCost</div>
+                        }
+                    </ul>
+                </div>
+            }
+        </div>
+
+        cardCounter++;
+    }
+ }

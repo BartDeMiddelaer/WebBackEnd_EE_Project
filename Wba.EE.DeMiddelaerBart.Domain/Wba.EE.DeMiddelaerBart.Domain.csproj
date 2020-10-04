@@ -1,0 +1,81 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20200427133145_InitialDbCreation.cs" />
+    <Compile Remove="Migrations\20200427133145_InitialDbCreation.Designer.cs" />
+    <Compile Remove="Migrations\20200427140948_TestDataAnnotations.cs" />
+    <Compile Remove="Migrations\20200427140948_TestDataAnnotations.Designer.cs" />
+    <Compile Remove="Migrations\20200427141104_InitialDbCreation.cs" />
+    <Compile Remove="Migrations\20200427141104_InitialDbCreation.Designer.cs" />
+    <Compile Remove="Migrations\20200427144654_InitialDbCreation.cs" />
+    <Compile Remove="Migrations\20200427144654_InitialDbCreation.Designer.cs" />
+    <Compile Remove="Migrations\20200427150855_EdditGenderToGenderIdInUser.cs" />
+    <Compile Remove="Migrations\20200427150855_EdditGenderToGenderIdInUser.Designer.cs" />
+    <Compile Remove="Migrations\20200427173612_InitialDbCreation.cs" />
+    <Compile Remove="Migrations\20200427173612_InitialDbCreation.Designer.cs" />
+    <Compile Remove="Migrations\20200427174822_InitialDbCreation.cs" />
+    <Compile Remove="Migrations\20200427174822_InitialDbCreation.Designer.cs" />
+    <Compile Remove="Migrations\20200427175506_InitialDbCreation.cs" />
+    <Compile Remove="Migrations\20200427175506_InitialDbCreation.Designer.cs" />
+    <Compile Remove="Migrations\20200427185137_InitialDbCreation.cs" />
+    <Compile Remove="Migrations\20200427185137_InitialDbCreation.Designer.cs" />
+    <Compile Remove="Migrations\20200427185722_one.cs" />
+    <Compile Remove="Migrations\20200427185722_one.Designer.cs" />
+    <Compile Remove="Migrations\20200427191013_two.cs" />
+    <Compile Remove="Migrations\20200427191013_two.Designer.cs" />
+    <Compile Remove="Migrations\20200427193836_AddPreMadeDecks.cs" />
+    <Compile Remove="Migrations\20200427193836_AddPreMadeDecks.Designer.cs" />
+    <Compile Remove="Migrations\20200427200942_one.cs" />
+    <Compile Remove="Migrations\20200427200942_one.Designer.cs" />
+    <Compile Remove="Migrations\20200427201500_two.cs" />
+    <Compile Remove="Migrations\20200427201500_two.Designer.cs" />
+    <Compile Remove="Migrations\20200427202801_One.cs" />
+    <Compile Remove="Migrations\20200427202801_One.Designer.cs" />
+    <Compile Remove="Migrations\20200427204121_InitialDbCreation.cs" />
+    <Compile Remove="Migrations\20200427204121_InitialDbCreation.Designer.cs" />
+    <Compile Remove="Migrations\20200430161356_test2.cs" />
+    <Compile Remove="Migrations\20200430161356_test2.Designer.cs" />
+    <Compile Remove="Migrations\20200430203838_newStart.cs" />
+    <Compile Remove="Migrations\20200430203838_newStart.Designer.cs" />
+    <Compile Remove="Migrations\20200430215706_Seeding.cs" />
+    <Compile Remove="Migrations\20200430215706_Seeding.Designer.cs" />
+    <Compile Remove="Migrations\20200430220708_test.cs" />
+    <Compile Remove="Migrations\20200430220708_test.Designer.cs" />
+    <Compile Remove="Migrations\20200430221625_Seeding.cs" />
+    <Compile Remove="Migrations\20200430221625_Seeding.Designer.cs" />
+    <Compile Remove="Migrations\20200430222332_UpdatDataBase.cs" />
+    <Compile Remove="Migrations\20200430222332_UpdatDataBase.Designer.cs" />
+    <Compile Remove="Migrations\20200430222724_newMigration.cs" />
+    <Compile Remove="Migrations\20200430222724_newMigration.Designer.cs" />
+    <Compile Remove="Migrations\20200501201804_testpd.cs" />
+    <Compile Remove="Migrations\20200501201804_testpd.Designer.cs" />
+    <Compile Remove="Migrations\20200501224036_One.cs" />
+    <Compile Remove="Migrations\20200501224036_One.Designer.cs" />
+    <Compile Remove="Migrations\20200501231707_two.cs" />
+    <Compile Remove="Migrations\20200501231707_two.Designer.cs" />
+    <Compile Remove="Migrations\20200501232801_trie.cs" />
+    <Compile Remove="Migrations\20200501232801_trie.Designer.cs" />
+    <Compile Remove="Migrations\20200501233147_test.cs" />
+    <Compile Remove="Migrations\20200501233147_test.Designer.cs" />
+    <Compile Remove="Migrations\20200502133559_testju.cs" />
+    <Compile Remove="Migrations\20200502133559_testju.Designer.cs" />
+    <Compile Remove="Migrations\20200502134303_testju2.cs" />
+    <Compile Remove="Migrations\20200502134303_testju2.Designer.cs" />
+    <Compile Remove="Migrations\20200502185008_drfd.cs" />
+    <Compile Remove="Migrations\20200502185008_drfd.Designer.cs" />
+    <Compile Remove="Migrations\20200506143700_site.cs" />
+    <Compile Remove="Migrations\20200506143700_site.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+</Project>

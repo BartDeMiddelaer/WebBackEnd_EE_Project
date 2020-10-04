@@ -1,0 +1,69 @@
+﻿@model List<Skill>
+@{
+    int skillCardCounter = 0;
+}
+
+<style>
+    a {
+        text-decoration: none;
+        color: black;
+        cursor: pointer;
+    }
+</style>
+
+
+@foreach (var skill in Model)
+{
+    string backColor = "";
+
+    switch (skill.SkillType)
+    {
+        case PokemonTypes.Normal:
+            backColor = "linen";
+            break;
+        case PokemonTypes.Fire:
+            backColor = "orangered";
+
+            break;
+        case PokemonTypes.Water:
+            backColor = "cornflowerblue";
+
+            break;
+        case PokemonTypes.Electric:
+            backColor = "yellow";
+
+            break;
+        case PokemonTypes.Grass:
+            backColor = "forestgreen";
+
+            break;
+        case PokemonTypes.Psychic:
+            backColor = "mediumpurple";
+
+            break;
+        default:
+            break;
+    }
+
+    string skillCardID = $"skillsCard{skillCardCounter}";
+    <a asp-controller="Home" asp-action="OutputDeck" asp-route-catogorie="Type" asp-route-value="@skill.SkillType">
+        <div class="skillsCard" id="@skillCardID" style="background-color:@backColor">
+
+            <div id="outerStokeSkillsCard"></div>
+            <div id="innerStokeSkillsCard"></div>
+
+            <p id="skillsCardName">@skill.Name</p>
+            <p id="skillsCardEffect">@skill.Effect</p>
+
+            <div id="statsFlex">
+                <div id="skillsCardDps">Dps: @skill.Dps</div>
+                <div id="skillsCardMana">Mp: @skill.ManaCost</div>
+                <!-- <div id="skillsCardAcc">Acc: @skill.Dps</div>  -->
+                <!-- <div id="skillsCardPp">Pp: @skill.Dps</div> -->
+            </div>
+        </div>
+    </a>
+    skillCardCounter++;
+}
+
+

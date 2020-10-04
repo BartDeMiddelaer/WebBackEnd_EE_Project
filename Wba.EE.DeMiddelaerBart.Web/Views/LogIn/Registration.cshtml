@@ -1,0 +1,128 @@
+﻿
+@model InputRegistration
+
+
+<form asp-controller="LogIn" asp-action="Registration" method="post" id="formWrapper">
+    <input hidden="hidden" asp-for="IndexOfAvatarSelectit" id="selectit_av" />
+    <input hidden="hidden" asp-for="IndexOfTeamSelectit" id="selectit_team" />
+
+    <article id="inPutArticals" style="width:330px;height:inherit;">
+        <div id="strockCard"></div>
+        <div id="strockCardInside"></div>
+        <h1 id="titelInfoCard">Info</h1>
+
+        <div id="inPutContent">
+            <div id="regForm">
+                <label asp-for="Username"></label><br />
+                <input asp-for="Username" maxlength="15"/><br />
+                <span asp-validation-for="Username"></span><br />
+
+                <label asp-for="Password"></label><br />
+                <input asp-for="Password" maxlength="30"/><br />
+                <span asp-validation-for="Password"></span><br />
+
+                <label asp-for="PasswordRepeat"></label><br />
+                <input asp-for="PasswordRepeat" maxlength="30"/><br />
+                <span asp-validation-for="PasswordRepeat"></span><br />
+
+                <label asp-for="GenderID"></label><br />
+                <select asp-for="GenderID" asp-items="@Html.GetEnumSelectList(typeof(Genders))"></select><br />
+                <span asp-validation-for="GenderID"></span><br />
+
+                <label asp-for="Dob"></label><br />
+                <input asp-for="Dob" /><br />
+                <span asp-validation-for="Dob"></span><br />
+
+                <label asp-for="Country"></label><br />
+                <input asp-for="Country" maxlength="20"/><br />
+                <span asp-validation-for="Country"></span><br />
+
+                <label asp-for="Email"></label><br />
+                <input asp-for="Email" maxlength="50"/><br />
+                <span asp-validation-for="Email"></span><br />
+
+                <label asp-for="PhoneNumber"></label><br />
+                <input asp-for="PhoneNumber" maxlength="20"/><br />
+                <span asp-validation-for="PhoneNumber"></span><br />
+            </div>
+        </div>
+    </article>
+
+    <div>
+        <article id="inPutArticals">
+            <div id="strockCard"></div>
+            <div id="strockCardInside"></div>
+            <h1 id="titelInfoCard">Team</h1>
+            <div id="shiftSpan">
+
+            </div>
+
+            <div id="inPutContent">
+
+                @for (int i = 1; i <= TeamCount; i++)
+                {
+                    string teamId = $"team{i}";
+                    string costemScr = $"/images/Teams/team{i}.svg";
+
+                    <img id=@teamId class="teamImg" src=@costemScr />
+                }
+
+            </div>
+            <span asp-validation-for="IndexOfTeamSelectit"></span><br />
+        </article>
+
+        <article id="inPutArticals">
+            <div id="strockCard"></div>
+            <div id="strockCardInside"></div>
+            <h1 id="titelInfoCard">Avatar</h1>
+            <div id="shiftSpan">
+
+            </div>
+
+            <div id="inPutContent">
+
+                @for (int i = 1; i <= AvatarCount; i++)
+                {
+                    string imgId = $"av{i}";
+                    string costemScr = $"/images/Avatars/avatar{i}.svg";
+
+                    <img id=@imgId class="avatarImg" src=@costemScr />
+                }
+            </div>
+            <span asp-validation-for="IndexOfAvatarSelectit"></span><br />
+        </article>
+
+
+        <article id="inPutArticals">
+            <div id="strockCard"></div>
+            <div id="strockCardInside"></div>
+            <h1 id="titelInfoCard">About you</h1>
+
+
+
+            <div id="inPutContent">
+                <div id="regForm">
+                    <textarea asp-for="Bio" id="textFeeld" maxlength="255"></textarea>
+                    <input type="submit" id="btn" />
+                </div>
+            </div>
+
+        </article>
+
+
+    </div>
+
+</form>
+
+<!-- JavaScripts -->
+<script asp-append-version="true" src="~/js/RegistrationHoverClickEvent.js"></script>
+
+<script>
+    ClickEvent('team', @TeamCount);
+    ClickEvent('av', @AvatarCount);
+</script>
+
+
+
+
+

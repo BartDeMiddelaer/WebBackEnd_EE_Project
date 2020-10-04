@@ -1,0 +1,46 @@
+﻿
+@model List<User>
+
+<link asp-append-version="true" href="~/css/LeaderBoardStyle.css" rel="stylesheet" />
+
+@foreach (var user in Model)
+{
+    <article id="inPutArticals" style="width:450px;height:300px;">
+        @{string costemScrAvatar = $"/images/Avatars/avatar{@user.IndexOfAvatarSelectit}.svg";}
+        @{string costemScrTeam = $"/images/Teams/team{@user.IndexOfTeamSelectit}.svg";}
+
+        <div id="strockCard"></div>
+        <div id="strockCardInside"></div>
+        <h1 id="titelInfoCard">@user.Name</h1>
+        <h1 id="titelInfoCard" style="right:20px;">Deck</h1>
+
+
+        <div id="inPutContent" style="height:155px;">
+            <a asp-controller="LogIn" asp-action="ProfilOfMember" asp-route-catogorie="SingelCard" asp-route-userName="@user.Name">
+                <img id="avatarProfile" src=@costemScrAvatar style="height:122px;" />
+            </a>
+
+            <div id="curenBatteDack">
+                @foreach (var card in DataBase.Cards.ToList().Where(u => u.UserId == user.Id))
+                {
+                    var mon = DataBase.Pokemons.ToList().Where(p => p.Id == card.PokemonId).FirstOrDefault();
+
+                    <a asp-controller="Home" asp-action="OutputDeck" asp-route-catogorie="SingelCard" asp-route-value="@mon.Name">
+                        <img src="@mon.PokemonPictureUrl" alt="@mon.Name" />
+                    </a>
+                }
+            </div>
+
+        </div>
+
+        <div id="inPutContent" style="margin-top:5px;">
+            <img src=@costemScrTeam
+                 style="height:50px;
+                        width:50px;
+                        position:absolute;
+                        margin:5px;" />
+            <div id="highScoreOfUser"> @user.HighScore</div>
+        </div>
+
+    </article>
+}

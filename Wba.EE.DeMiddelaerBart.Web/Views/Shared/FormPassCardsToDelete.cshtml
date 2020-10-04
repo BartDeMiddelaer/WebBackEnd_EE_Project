@@ -1,0 +1,20 @@
+﻿@model string[]
+
+
+<form asp-controller="AdminRights" asp-action="DeleteAPokemonProsses" method="post" id="cardsPasser">
+
+    <!-- Maakt voor alle kaarten een hiddeen feeld om door te kunnen given -->
+    @{
+        for (int i = 0; i < Model.Count(); i++)
+        {
+            <input asp-for="@Model[i]" hidden="hidden" id="selectidCard" value="-1" />
+        }
+    }
+
+    <input id="rdyBtn" type="submit" value="Delete Cards"
+           style="
+            position:absolute;
+            bottom:0px;
+            width:130px; " />
+
+</form> 

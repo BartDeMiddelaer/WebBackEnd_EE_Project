@@ -1,0 +1,38 @@
+﻿
+@{
+    var sortList = DataBase.Users.ToList();
+    sortList.Sort((a, b) => b.HighScore.Value.CompareTo(a.HighScore.Value));
+}
+
+<div id="teamScore" style="width:100%;">
+
+    <article id="inPutArticals" style="width:620px;height:inherit;">
+
+        <div id="strockCard"></div>
+        <div id="strockCardInside"></div>
+        <h1 id="titelInfoCard">Combinde Team Scores</h1>
+
+        <div id="inPutContent">
+
+            <div id="teamScoreBlocks">
+                @for (int i = 1; i <= TeamCount; i++)
+                {
+
+                    var score = DataBase.Users.ToList().Where(u=> u.IndexOfTeamSelectit == i).Sum(s => s.HighScore);
+                    string costemScrTeam = $"/images/Teams/team{@i}.svg";
+
+                    <div>
+                        <img src=@costemScrTeam />
+                        <h1>@score</h1>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </article>
+
+</div>
+
+<partial name="RenderUsersPlusDecks" model="@sortList" />
+
+

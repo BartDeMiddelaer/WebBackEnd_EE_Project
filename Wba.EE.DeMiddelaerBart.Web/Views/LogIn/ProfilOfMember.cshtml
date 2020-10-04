@@ -1,0 +1,104 @@
+﻿@{
+    string costemScr = "";
+}
+
+@model User
+
+<!-- Toont alle info dat ingegeven is door de user als je ingelogt bent -->
+@if (Model != null)
+{
+    <div id="formWrapper">
+        <div>
+            <article id="inPutArticals" style="width:225px">
+                <div id="strockCard"></div>
+                <div id="strockCardInside"></div>
+                <h1 id="titelInfoCard" style="width:100px;">Avatar</h1>
+
+
+                <div id="inPutContent" style="width:150px; padding:10px;">
+                    @{costemScr = $"/images/Avatars/avatar{Model.IndexOfAvatarSelectit}.svg";}
+                    <img id="avatarProfile" src=@costemScr />
+                </div>
+
+            </article>
+
+            <article id="inPutArticals" style="width:225px">
+                <div id="strockCard"></div>
+                <div id="strockCardInside"></div>
+                <h1 id="titelInfoCard" style="width:100px;">Team</h1>
+
+
+                <div id="inPutContent" style="width:150px; padding:10px;">
+                    @{costemScr = $"/images/Teams/team{Model.IndexOfTeamSelectit}.svg";}
+                    <img id="avatarProfile" src=@costemScr />
+                </div>
+
+            </article>
+
+            <article id="inPutArticals" style="width:225px">
+                <div id="strockCard"></div>
+                <div id="strockCardInside"></div>
+                <h1 id="titelInfoCard" style="width:100px;">Top score</h1>
+
+
+                <div id="inPutContent">
+                    @if (Model.HighScore == 0)
+                    {
+                        <div id="highScoreOfUser"> / </div>
+                    }
+                    else
+                    {
+                        <div id="highScoreOfUser">@Model.HighScore</div>
+                    }
+                </div>
+
+            </article>
+
+        </div>
+
+        <div>
+            <article id="inPutArticals">
+                <div id="strockCard"></div>
+                <div id="strockCardInside"></div>
+                <h1 id="titelInfoCard" style="width:auto;">@Model.Name 's profile</h1>
+
+
+                <div id="inPutContent">
+                    <label asp-for="@Model.GenderId"></label>
+                    <h3>@Enum.GetName(typeof(Genders), Model.GenderId)</h3><br />
+
+                    <label asp-for="@Model.DayOfBirth"></label>
+                    <h3>@Model.DayOfBirth</h3><br />
+
+                    <label asp-for="@Model.Country"></label>
+                    <h3>@Model.Country</h3><br />
+
+                    <label asp-for="@Model.Email"></label>
+                    <h3>@Model.Email</h3><br />
+
+                    <label asp-for="@Model.PhoneNumber"></label>
+                    <h3>@Model.PhoneNumber</h3><br />
+                </div>
+            </article>
+
+
+            <article id="inPutArticals">
+                <div id="strockCard"></div>
+                <div id="strockCardInside"></div>
+                <h1 id="titelInfoCard" style="width:auto;">About @Model.Name</h1>
+
+
+                <div id="inPutContent">
+                    <h3>@Model.Bio</h3>
+                </div>
+            </article>
+        </div>
+
+    </div>
+}
+else
+{
+    <h2>No Registration Found</h2>
+}
+
+

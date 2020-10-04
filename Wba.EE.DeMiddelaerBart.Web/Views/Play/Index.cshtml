@@ -1,0 +1,106 @@
+﻿@model PlayerViewModel
+
+@{
+    Random rand = new Random();
+}
+<!-- Intelize Razor vars for JavaScript / scripts -->
+<script>
+    var countOfCards = @CountOfCardsToBattelWhit;
+    var bossCurentHP = @HpOfBoss;
+</script>
+
+<div id="battelInfo">
+
+    <div id="startGameCountdown">
+        <article id="inPutArticals" style="width:225px; height:225px;border-color:Magenta;">
+            <div id="strockCard"></div>
+            <div id="strockCardInside"></div>
+            <h1 id="titelInfoCard">Get Ready! :D</h1>
+
+
+            <div id="inPutContent" style="height:155px; width:185px;">
+                <button id="GameStartBtn"
+                        style="
+                    height:30px;
+                    width:100px;
+                    position:absolute;
+                    bottom:62px;
+                    right:42px;">
+                    Start Game
+                </button>
+
+            </div>
+
+        </article>
+    </div>
+
+    <script>
+        document.getElementById('GameStartBtn').addEventListener('click', () => {
+            startGame = true;
+            document.getElementById('startGameCountdown').innerHTML = '';
+            // add countdown
+        });
+    </script>
+    
+</div>
+
+<div id="battelLogs" style="height:170px; padding:5px;">
+
+</div>
+
+<div id="battelAction">
+
+    <div id="selectidCardPlusSkills">
+
+        <article id="inPutArticals" class="selectidCard">
+
+            <div id="strockCard"></div>
+            <div id="strockCardInside"></div>
+            <h1 id="titelInfoCard">@Model.ShowThisDeck[0].Name</h1>
+
+            <div id="inPutContent">
+                <img id="activCardImg" src="@Model.ShowThisDeck[0].PokemonPictureUrl" />
+            </div>
+
+            <div id="cardHpBox">
+                <div id="cardHpValue"></div>
+            </div>
+
+            <div id="cardManaBox">
+                <div id="cardManaValue"></div>
+            </div>
+
+        </article>
+
+        <div id="skills">
+            <partial name="RenderSkillCardsNoLinksPartial" model="@Model.ShowThisDeck[0].ThisPokemonsSkills" />
+        </div>
+    </div>
+
+    <article id="inPutArticals" class="bossCard" style="width:260px;">
+        <div id="strockCard"></div>
+        <div id="strockCardInside"></div>
+        <h1 id="titelInfoCard">LEAN_AND_MEAN</h1>
+
+        <div id="inPutContent">
+            <img src="~/images/CharizardBoss.svg" />
+        </div>
+
+        <div id="bossHpBox">
+            <div id="bossHpValue"></div>
+        </div>
+
+        <div id="bossDpsCoundown">
+            <div id="bossDpsCoundownValue"></div>
+        </div>
+
+    </article>
+
+</div>
+
+<div id="fexboxPlayCard">
+    <partial name="RenderDeckNoLinksPatial" model="@Model.ShowThisDeck" />
+</div>
+
+<script asp-append-version="true" src="~/js/Game.js"></script>
+

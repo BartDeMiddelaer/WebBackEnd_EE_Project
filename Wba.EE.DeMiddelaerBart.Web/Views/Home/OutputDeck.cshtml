@@ -1,0 +1,10 @@
+﻿
+@{
+    Random rand = new Random();
+}
+
+@model PlayerViewModel
+
+<!-- RandomDack als Priview hoe de kaarten er uit zien -->
+<partial name="RenderDeckPatial" model="@Model.ShowThisDeck" />
+

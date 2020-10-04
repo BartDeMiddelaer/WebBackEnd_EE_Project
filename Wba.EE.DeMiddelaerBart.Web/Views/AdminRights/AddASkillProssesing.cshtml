@@ -1,0 +1,49 @@
+﻿
+@model InPutAddSkillModel
+
+<article id="inPutArticals" style="width:420px;">
+    <div id="strockCard"></div>
+    <div id="strockCardInside"></div>
+    <h1 id="titelInfoCard">Add a skill</h1>
+
+    <div id="inPutContent">
+        <form asp-controller="AdminRights" asp-action="AddASkillProssesing" method="post" id="regForm">
+
+            <label asp-for="Name"></label><br />
+            <input type="text" asp-for="Name" maxlength="25" /><br />
+            <span asp-validation-for="Name"></span><br />
+
+            <label asp-for="SkillType"></label><br />
+            <select asp-for="SkillType" asp-items="Html.GetEnumSelectList<PokemonTypes>()"></select><br />
+            <span asp-validation-for="SkillType"></span><br />
+
+            <label asp-for="ManaCost"></label><br />
+            <input type="text" asp-for="ManaCost" maxlength="3" /><br />
+            <span asp-validation-for="ManaCost"></span><br />
+
+            <label asp-for="Dps"></label><br />
+            <input type="text" asp-for="Dps" maxlength="3" /><br />
+            <span asp-validation-for="Dps"></span><br />
+
+            <label asp-for="Acc"></label><br />
+            <input type="text" asp-for="Acc" maxlength="3" /><br />
+            <span asp-validation-for="Acc"></span><br />
+
+            <label asp-for="Pp"></label><br />
+            <input type="text" asp-for="Pp" maxlength="3" /><br />
+            <span asp-validation-for="Pp"></span><br />
+
+            <label asp-for="Turns"></label><br />
+            <input type="text" asp-for="Turns" maxlength="2" /><br />
+            <span asp-validation-for="Turns"></span><br />
+
+            <label asp-for="Effect"></label><br />
+            <textarea asp-for="Effect" id="textFeeld" style="height:120px;width:350px;" maxlength="255"></textarea><br />
+            <span asp-validation-for="Effect"></span><br />
+
+            <input type="submit" value="Make" /><br />
+        </form>
+    </div>
+
+</article>
+

@@ -1,0 +1,8 @@
+﻿
+@model Pokemon
+
+<partial name="RenderDeckPatial" model="new List<Pokemon> { Model }" />
+
+<div id="skillsCardFlex">
+    <partial name="RenderSkillCardsPartial" model="Model.ThisPokemonsSkills" />
+</div>

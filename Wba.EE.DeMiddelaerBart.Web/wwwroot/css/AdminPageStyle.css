@@ -1,0 +1,9 @@
+﻿#inPutArticals:hover {
+    background-color: lawngreen;
+}
+#inPutArticals h5 {
+    font-size: 30px;
+    color: black;
+    padding:25px;
+    text-align: center;
+}

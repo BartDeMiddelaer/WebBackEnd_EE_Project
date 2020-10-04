@@ -1,0 +1,27 @@
+﻿
+
+@model InputLogInViewModel
+
+    <form asp-controller="LogIn" asp-action="ProssesLogIn" method="post">
+
+        <div id="loginControls">
+
+            <label asp-for="UserName"></label>
+            <br />
+            <input asp-for="UserName" />
+            <br />
+
+            <label asp-for="PassWord"></label>
+            <br />
+            <input asp-for="PassWord" />
+            <br />
+
+            <input type="submit" value="Log in" id="btn" />
+            <button asp-controller="LogIn" asp-action="Registration" id="btn"
+                    style="background-color:linen">Registrat</button>
+
+        </div>
+    </form>
+
+    
+

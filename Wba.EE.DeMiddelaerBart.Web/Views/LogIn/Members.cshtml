@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "Members";
+}
+
+
+@foreach (var user in DataBase.Users.ToList())
+{
+    <article id="inPutArticals" style="width:auto;height:250px;">
+        <div id="strockCard"></div>
+        <div id="strockCardInside"></div>
+        <h1 id="titelInfoCard">@user.Name</h1>
+
+
+        <div id="inPutContent" style="width:150px; padding:10px;">
+            @{string costemScr = $"/images/Avatars/avatar{user.IndexOfAvatarSelectit}.svg";}
+            <img id="avatarProfile" src=@costemScr />
+        </div>
+
+    </article>
+}

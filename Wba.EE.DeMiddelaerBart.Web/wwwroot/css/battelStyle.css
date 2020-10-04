@@ -1,0 +1,146 @@
+﻿#bossHpBox {
+    position: absolute;
+    right: 30px;
+    top: -1px;
+    border: solid 1px black;
+    height: 220px;
+    width: 15px;
+}
+#bossHpValue {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 100%; /*<----------------- het % hp van de baas dps here*/
+    background-color: red;
+    border-top: solid 1px black;
+}
+#bossDpsCoundown {
+    position: absolute;
+    right: 10px;
+    top: -1px;
+    border: solid 1px black;
+    height: 220px;
+    width: 15px;
+}
+#bossDpsCoundownValue {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 0%; /*<----------------- Dps ticker*/
+    background-color: green;
+    border-top: solid 1px black;
+}
+/*--------------------------------------------------------*/
+#cardHpBox {
+    position: absolute;
+    right: 30px;
+    top: -1px;
+    border: solid 1px black;
+    height: 220px;
+    width: 15px;
+}
+#cardHpValue {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 100%; /*<----------------- het % hp van de selectid card dps here*/
+    background-color: red;
+    border-top: solid 1px black;
+}
+#cardManaBox {
+    position: absolute;
+    right: 10px;
+    top:-1px;
+    border: solid 1px black;
+    height: 220px;
+    width: 15px;
+}
+#cardManaValue {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    height: 100%; /*<----------------- het % Mana van de selectid card drain here*/
+    background-color: cornflowerblue;
+    border-top: solid 1px black;
+}
+/*--------------------------------------------------------*/
+#fexboxPlayCard {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-self: flex-end;
+    width: auto;
+    height: 150px;
+    align-self: flex-end;
+    bottom: -220px;
+    margin-left: -100px;
+    margin-top: 330px;
+
+}
+
+
+#fexboxPlayCard .card {
+    margin-right: -100px;
+    margin-top: -300px;
+}
+#fexboxPlayCard .card:hover {
+    margin-top: -350px;
+    transform: rotate(-5deg);
+    z-index: 1000;
+}
+/*--------------------------------------------------------*/
+
+#battelAction {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: 300px;
+}
+
+#battelAction article {
+    height: 228px;
+    width: 230px;
+}
+#inPutContent img {
+    height: 150px;
+    width: 150px;
+}
+#battelAction #inPutContent {
+    width:150px;
+}
+contentContainer {
+    overflow: hidden;
+}
+#battelAction #selectidCardPlusSkills {
+    display:flex;
+    flex-wrap:wrap;
+}
+#battelLogs {
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    width:680px;
+    background-color: linen;
+    border:solid 1px black;
+    border-radius: 10px;
+    overflow:auto;
+}
+
+#battelLogs::-webkit-scrollbar {
+    width: 20px;
+}
+
+#battelLogs::-webkit-scrollbar-track {
+    border-left: 1px solid gray;
+    width: 20px;
+}
+
+#battelLogs::-webkit-scrollbar-thumb {
+    background-color: crimson;
+    border-left: 1px solid gray;
+    width: 20px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}

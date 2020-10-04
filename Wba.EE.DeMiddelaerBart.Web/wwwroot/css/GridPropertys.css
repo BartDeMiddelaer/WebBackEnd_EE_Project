@@ -1,0 +1,81 @@
+﻿
+* {
+    margin: 0px;
+    padding: 0px;
+    background-color: transparent;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    text-decoration: none
+}
+html {
+    background-color: burlywood;
+    height: 100%;
+    width: 100%;
+    min-width:865px;
+}
+body {
+    height: 100%;
+    width: 100%;
+    min-width: 865px;
+}
+header {
+    grid-area: header;
+    background: url("../images/Pokemonmap.jpg") no-repeat center center fixed;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    
+}
+#contentContainer {
+    display: grid;
+    grid-template: "header header header" 250px "nav nav nav" 15px "aLeft content aRight" "footer footer footer" 200px / 10% auto 10%;
+    min-height: 100%;
+    min-width: 100%;
+}
+nav {
+    grid-area: nav;
+    background-color: chocolate;
+    height: auto;
+    width: 100%;
+    -webkit-box-shadow: 0px -26px 35px 0px rgba(0,0,0,0.8);
+    -moz-box-shadow: 0px -26px 35px 0px rgba(0,0,0,0.8);
+    box-shadow: 0px -26px 35px 0px rgba(0,0,0,0.8);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    margin-top: -50px;
+    border-top:solid 1px black;
+}
+content {
+    grid-area: content;
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: burlywood;
+    margin-bottom: 50px;
+    margin-top: -20px;
+    border-top: solid 1px black;
+}
+#aLeft {
+    grid-area: aLeft;
+    border-top-left-radius: 20px;
+    background-color: burlywood;
+    margin-top: -20px;
+    border-top: solid 1px black;
+}
+#aRight {
+    grid-area: aRight;
+    border-top-right-radius: 20px;
+    background-color: burlywood;
+    margin-top: -20px;
+    border-top: solid 1px black;
+}
+footer {
+    grid-area: footer;
+    background-color: sienna;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    position: relative;
+    width: 100%;
+    border-top: solid 1px black;
+}

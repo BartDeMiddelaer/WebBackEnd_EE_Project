@@ -1,0 +1,101 @@
+﻿@{
+    string costemScr = "";
+}
+<!-- Toont alle info dat ingegeven is door de user als je ingelogt bent -->
+@if (GetUser(HttpContextAccessor.HttpContext) != null)
+{
+    <div id="formWrapper">
+        <div>
+            <article id="inPutArticals" style="width:225px">
+                <div id="strockCard"></div>
+                <div id="strockCardInside"></div>
+                <h1 id="titelInfoCard" style="width:100px;">Avatar</h1>
+
+
+                <div id="inPutContent" style="width:150px; padding:10px;">
+                    @{costemScr = $"/images/Avatars/avatar{GetUser(HttpContextAccessor.HttpContext).IndexOfAvatarSelectit}.svg";}
+                    <img id="avatarProfile" src=@costemScr />
+                </div>
+
+            </article>
+
+            <article id="inPutArticals" style="width:225px">
+                <div id="strockCard"></div>
+                <div id="strockCardInside"></div>
+                <h1 id="titelInfoCard" style="width:100px;">Team</h1>
+
+
+                <div id="inPutContent" style="width:150px; padding:10px;">
+                    @{costemScr = $"/images/Teams/team{GetUser(HttpContextAccessor.HttpContext).IndexOfTeamSelectit}.svg";}
+                    <img id="avatarProfile" src=@costemScr />
+                </div>
+
+            </article>
+
+            <article id="inPutArticals" style="width:225px">
+                <div id="strockCard"></div>
+                <div id="strockCardInside"></div>
+                <h1 id="titelInfoCard" style="width:100px;">Top score</h1>
+
+
+                <div id="inPutContent">
+                    @if (GetUser(HttpContextAccessor.HttpContext).HighScore == 0)
+                    {
+                        <div id="highScoreOfUser"> / </div>
+                    }
+                    else
+                    {
+                        <div id="highScoreOfUser">@GetUser(HttpContextAccessor.HttpContext).HighScore</div>
+                    }
+                </div>
+
+            </article>
+
+        </div>
+
+        <div>
+            <article id="inPutArticals">
+                <div id="strockCard"></div>
+                <div id="strockCardInside"></div>
+                <h1 id="titelInfoCard" style="width:auto;">@GetUser(HttpContextAccessor.HttpContext).Name 's profile</h1>
+
+
+                <div id="inPutContent">
+                    <label asp-for="@GetUser(HttpContextAccessor.HttpContext).GenderId"></label>
+                    <h3>@Enum.GetName(typeof(Genders),GetUser(HttpContextAccessor.HttpContext).GenderId)</h3><br />
+
+                    <label asp-for="@GetUser(HttpContextAccessor.HttpContext).DayOfBirth"></label>
+                    <h3>@GetUser(HttpContextAccessor.HttpContext).DayOfBirth</h3><br />
+
+                    <label asp-for="@GetUser(HttpContextAccessor.HttpContext).Country"></label>
+                    <h3>@GetUser(HttpContextAccessor.HttpContext).Country</h3><br />
+
+                    <label asp-for="@GetUser(HttpContextAccessor.HttpContext).Email"></label>
+                    <h3>@GetUser(HttpContextAccessor.HttpContext).Email</h3><br />
+
+                    <label asp-for="@GetUser(HttpContextAccessor.HttpContext).PhoneNumber"></label>
+                    <h3>@GetUser(HttpContextAccessor.HttpContext).PhoneNumber</h3><br />
+                </div>
+            </article>
+
+
+            <article id="inPutArticals">
+                <div id="strockCard"></div>
+                <div id="strockCardInside"></div>
+                <h1 id="titelInfoCard" style="width:auto;">About @GetUser(HttpContextAccessor.HttpContext).Name</h1>
+
+
+                <div id="inPutContent">
+                    <h3>@GetUser(HttpContextAccessor.HttpContext).Bio</h3>
+                </div>
+            </article>
+        </div>
+
+    </div>
+}
+else
+{
+    <h2>No Registration Found</h2>
+}
+
+

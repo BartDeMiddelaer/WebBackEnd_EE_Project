@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google" content="notranslate">
+    <title>EE De Middelaer Bart</title>
+    <link asp-append-version="true" rel="stylesheet" type="text/css" href="~/css/CardStyle.css" />
+    <link asp-append-version="true" rel="stylesheet" type="text/css" href="~/css/GridPropertys.css" />
+    <link asp-append-version="true" rel="stylesheet" type="text/css" href="~/css/NavigationbarAndInPutStyle.css" />
+    <link asp-append-version="true" rel="stylesheet" type="text/css" href="~/css/FooterStyle.css" />
+    <link asp-append-version="true" rel="stylesheet" type="text/css" href="~/css/BattelStyle.css" />
+</head>
+<body>
+
+    <div id="contentContainer">
+        <header>
+
+            <img src="~/images/titel.png" />
+
+            <div id="loginOffset">
+
+                <!-- Login menu / welcom text -->
+                @if (GetUser(HttpContextAccessor.HttpContext) == null)
+                {
+                    <div id="loginWrapper">
+                        <partial name="LogInPartial" model="new InputLogInViewModel()" />
+                    </div>
+                }
+                else
+                {
+                    string costemAvatarScr = $"/images/Avatars/avatar{GetUser(HttpContextAccessor.HttpContext).IndexOfAvatarSelectit}.svg";
+
+                    <div id="loginWrapper" style="margin-top:0px;">
+                        <div id="welcomTextLogin">
+
+                            <img src=@costemAvatarScr id="avatarOfLogdinUser" />
+
+                            Welcom <span>@GetUser(HttpContextAccessor.HttpContext).Name</span>
+                            <a asp-controller="LogIn" asp-action="Logout"> Logout</a>
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+        </header>
+
+        <nav>
+            <p>Navigationbar</p>
+            @if (GetUser(HttpContextAccessor.HttpContext) != null)
+            {
+                <ul>
+                    @if (GetUser(HttpContextAccessor.HttpContext).TypeOfUser == UserType.User)
+                    {
+                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li><a asp-controller="MakeDeck" asp-action="Index">MakeDeck</a></li>
+                        <li><a asp-controller="GameRules" asp-action="Index">GameRules</a></li>
+                        <li><a asp-controller="OverView" asp-action="Index">OverView</a></li>
+                        <li><a asp-controller="login" asp-action="RegistrationSucces">Profile</a></li>
+                        <li><a asp-controller="login" asp-action="Members">Members</a></li>
+                        <li><a asp-controller="login" asp-action="Leaderboard">Leaderboard</a></li>
+
+                    }
+                    @if (GetUser(HttpContextAccessor.HttpContext).TypeOfUser == UserType.Admin)
+                    {
+                        <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li><a asp-controller="MakeDeck" asp-action="Index">MakeDeck</a></li>
+                        <li><a asp-controller="GameRules" asp-action="Index">GameRules</a></li>
+                        <li><a asp-controller="OverView" asp-action="Index">OverView</a></li>
+                        <li><a asp-controller="login" asp-action="RegistrationSucces">Profile</a></li>
+                        <li><a asp-controller="login" asp-action="Members">Members</a></li>
+                        <li><a asp-controller="login" asp-action="Leaderboard">Leaderboard</a></li>
+
+                        <li style="background-color:red;"><a asp-controller="AdminRights" asp-action="AdminPanel">AdminPanel</a></li>
+
+                    }
+                </ul>
+            }
+            else
+            {
+                <ul>
+                    <li><a asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-controller="OverView" asp-action="Index">OverView</a></li>
+                </ul>
+            }
+        </nav>
+
+        <content>
+            <div id="icons">
+                <!-- Battel en info knopje om het op te roepen of te verbergen -->
+
+                @if (GetUser(HttpContextAccessor.HttpContext) != null)
+                {
+                    if (GetUser(HttpContextAccessor.HttpContext).PlayDeck.Count() == CountOfCardsToBattelWhit)
+                    {
+                        <div id="battelBtn">
+                            <a asp-controller="Play" asp-action="Index"><img src="~/images/fist.svg" /></a>
+                        </div>
+                    }
+                }
+
+            </div>
+            @RenderBody()
+        </content>
+
+        <aside id="aLeft"></aside>
+        <aside id="aRight"></aside>
+
+        <footer>
+            <!-- Zoek links -->
+            <div id="flexBoxFooter">
+                <ul>
+                    <li><a asp-controller="Home" asp-action="OutputDeck" asp-route-catogorie="Alle"> Alle pokemon</a></li>
+                    <li><a asp-controller="Home" asp-action="OutputDeck" asp-route-catogorie="Type" asp-route-value="Normal"> Normal pokemon</a></li>
+                    <li><a asp-controller="Home" asp-action="OutputDeck" asp-route-catogorie="Type" asp-route-value="Fire"> Fire pokemon</a></li>
+                    <li><a asp-controller="Home" asp-action="OutputDeck" asp-route-catogorie="Type" asp-route-value="Water"> Water pokemon</a></li>
+                    <li><a asp-controller="Home" asp-action="OutputDeck" asp-route-catogorie="Type" asp-route-value="Electric"> Electric pokemon</a></li>
+                    <li><a asp-controller="Home" asp-action="OutputDeck" asp-route-catogorie="Type" asp-route-value="Grass"> Grass pokemon</a></li>
+                    <li><a asp-controller="Home" asp-action="OutputDeck" asp-route-catogorie="Type" asp-route-value="Psychic"> Psychic pokemon</a></li>
+
+                </ul>
+
+                <ul>
+                    <li><a asp-controller="Home" asp-action="OutputDeck" asp-route-catogorie="Generate" asp-route-value="3"> Generate 3 PlayCards</a></li>
+                    <li><a asp-controller="Home" asp-action="OutputDeck" asp-route-catogorie="Property" asp-route-value="Hp" asp-route-supValue="300"> Alle pokemon 300 Hp</a></li>
+                    <li><a asp-controller="Home" asp-action="OutputDeck" asp-route-catogorie="Property" asp-route-value="Mana" asp-route-supValue="160"> Alle pokemon 160 Mana</a></li>
+                    <li><a asp-controller="Home" asp-action="OutputDeck" asp-route-catogorie="Property" asp-route-value="Height" asp-route-supValue="0.8"> Alle pokemon Height 0.8m</a></li>
+                    <li><a asp-controller="Home" asp-action="OutputDeck" asp-route-catogorie="Property" asp-route-value="Weight" asp-route-supValue="7"> Alle pokemon 7.0kg weight</a></li>
+                    <li><a asp-controller="Home" asp-action="OutputDeck" asp-route-catogorie="Property" asp-route-value="BMI" asp-route-supValue="30"> Alle pokemon 30 BMI</a></li>
+                    <li><a asp-controller="Home" asp-action="OutputDeck" asp-route-catogorie="Property" asp-route-value="Lvl" asp-route-supValue="20"> Alle pokemon lvl 20</a></li>
+                </ul>
+
+                <div style="position:absolute; top:0px; left:0px;">
+                    <partial name="FormSearch" model="new SearchResultModel()" />
+                </div>
+
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+﻿@model List<Skill>
+
+<article id="inPutArticals" style="width:250px;height:100px;">
+    <div id="strockCard"></div>
+    <div id="strockCardInside"></div>
+    <h1 id="titelInfoCard">Delete Selection</h1>
+
+
+    <div id="inPutContent" style="height:35px;">
+
+        <!-- Verwerkinfs Partial (PostDeck!) knopje -->
+        <partial name="FormPassSkillsToDelete" model="new string[Model.Count]" />
+    </div>
+
+</article>
+
+
+<partial name="RenderSkillCardsNoLinksPartial" model="Model" />
+
+
+<script>
+
+    var countOfCards = @Model.Count();
+    var maxSelectebelPokemons = countOfCards;
+    var flickerSelectColor = '@CardSelectColorOne';
+    var selectColorOne = '@CardSelectColorOne';
+    var selectColorTwo = '@CardSelectColorTwo';
+
+</script>
+
+<script asp-append-version="true" src="~/js/SkillSelectScriptOnName.js"></script>
